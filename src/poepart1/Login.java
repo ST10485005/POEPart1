@@ -48,8 +48,7 @@ public class Login {
     public boolean checkCellPhoneNumber() {
         return cellPhoneNumber.matches("^\\+27\\d{9}$");
     }
-
-    // 👉 ADD IT HERE
+    
     public String registerUser() {
         if (!checkUserName()) {
             return "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.";
@@ -64,5 +63,17 @@ public class Login {
         }
 
         return "User has been registered successfully.";
+    }
+    
+    public boolean loginUser(String enteredUserName, String enteredPassword) {
+        return this.userName.equals(enteredUserName) && this.password.equals(enteredPassword);
+    }
+
+    public String returnLoginStatus(String enteredUserName, String enteredPassword) {
+        if (loginUser(enteredUserName, enteredPassword)) {
+            return "Welcome " + firstName + ", " + lastName + " it is great to see you again.";
+        } else {
+            return "Username or password incorrect, please try again.";
+        }
     }
 }
